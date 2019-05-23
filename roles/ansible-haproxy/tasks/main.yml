@@ -1,22 +1,22 @@
 ---
-- include: _preliminary_check.yml
+- import_tasks: _preliminary_check.yml
 
-- include: _remove_previous.yml
+- import_tasks: _remove_previous.yml
   when: haproxy_bin.stat.exists
 
-- include: _create.yml
+- import_tasks: _create.yml
 
-- include: _download.yml
+- import_tasks: _download.yml
 
-- include: _make.yml
+- import_tasks: _make.yml
 
-- include: _install.yml
+- import_tasks: _install.yml
 
-- include: _config.yml
+- import_tasks: _config.yml
 
-- include: _initd.yml
+- import_tasks: _initd.yml
 
-- include: _haproxyctl.yml
+- import_tasks: _haproxyctl.yml
   when: haproxy_haproxyctl
 
 - name: start haproxy
