@@ -1,5 +1,13 @@
 ---
 # file: roles/haproxy/tasks/install-Generic.yml
+- name: install system packages
+  package: name={{ item }} state=present
+  become: true
+  with_items:
+    - libselinux-python
+    - policycoreutils-python
+    - python-enum34
+
 - name: Installing HAproxy package
   package:
     name: haproxy
