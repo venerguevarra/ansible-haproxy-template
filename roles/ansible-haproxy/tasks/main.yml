@@ -1,26 +1,28 @@
 ---
-- import_tasks: _preliminary_check.yml
+# file: roles/haproxy/tasks/main.yml
+- name: Include OS variables
+  include_vars: "{{ ansible_os_family }}.yml"
+  tags:
+    - haproxy
+    - haproxy-install
+    - haproxy-firewall
+    - haproxy-selinux
+    - haproxy-config
+    - haproxy-sysctl
 
-- import_tasks: _remove_previous.yml
-  when: haproxy_bin.stat.exists
+- include: install.yml
+  tags: [ haproxy, haproxy-install ]
 
-- import_tasks: _create.yml
+- include: firewall.yml
+  tags: [ haproxy, haproxy-firewall ]
+  when: haproxy_firewalld | bool
 
-- import_tasks: _download.yml
+- include: selinux.yml
+  tags: [ haproxy, haproxy-selinux ]
+  when: haproxy_selinux | bool
 
-- import_tasks: _make.yml
+- include: config.yml
+  tags: [ haproxy, haproxy-config ]
 
-- import_tasks: _install.yml
-
-- import_tasks: _config.yml
-
-- import_tasks: _initd.yml
-
-- import_tasks: _haproxyctl.yml
-  when: haproxy_haproxyctl
-
-- name: start haproxy
-  service: >
-    name=haproxy
-    enabled=yes
-    state=started
+- include: sysctl.yml
+  tags: [ haproxy, haproxy-sysctl ]
