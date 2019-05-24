@@ -2,4 +2,4 @@
 # Configure and deploy the load balancer(s).
 - hosts: all
   roles:
-  - { role: ansible-haproxy, sudo: yes}
+  - { role: ansible-haproxy, become: yes}
