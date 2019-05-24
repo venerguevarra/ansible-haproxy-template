@@ -2,19 +2,19 @@
 # {{ ansible_managed }}
 
 {# GLOBAL CONFIGURATION #}
-{% import_tasks 'haproxy-global.cfg.j2' %}
+{% include 'haproxy-global.cfg.j2' %}
 
 {# DEFAULT CONFIGURATION #}
-{% import_tasks 'haproxy-default.cfg.j2' %}
+{% include 'haproxy-default.cfg.j2' %}
 
 {# STATS CONFIGURATION #}
-{% import_tasks 'haproxy-stats.cfg.j2' %}
+{% include 'haproxy-stats.cfg.j2' %}
 
 {# PEER CONFIGURATION #}
-{% import_tasks 'haproxy-peer.cfg.j2' %}
+{% include 'haproxy-peer.cfg.j2' %}
 {# LISTEN CONFIGURATION #}
-{% import_tasks 'haproxy-listen.cfg.j2' %}
+{% include 'haproxy-listen.cfg.j2' %}
 {# FRONTEND CONFIGURATION #}
-{% import_tasks 'haproxy-frontend.cfg.j2' %}
+{% include 'haproxy-frontend.cfg.j2' %}
 {# BACKEND CONIGURATION #}
-{% import_tasks 'haproxy-backend.cfg.j2' %}
+{% include 'haproxy-backend.cfg.j2' %}
