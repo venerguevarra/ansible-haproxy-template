@@ -10,19 +10,19 @@
     - haproxy-config
     - haproxy-sysctl
 
-- include: install.yml
+- import_tasks: install.yml
   tags: [ haproxy, haproxy-install ]
 
-- include: firewall.yml
+- import_tasks: firewall.yml
   tags: [ haproxy, haproxy-firewall ]
   when: haproxy_firewalld | bool
 
-- include: selinux.yml
+- import_tasks: selinux.yml
   tags: [ haproxy, haproxy-selinux ]
   when: haproxy_selinux | bool
 
-- include: config.yml
+- import_tasks: config.yml
   tags: [ haproxy, haproxy-config ]
 
-- include: sysctl.yml
+- import_tasks: sysctl.yml
   tags: [ haproxy, haproxy-sysctl ]
