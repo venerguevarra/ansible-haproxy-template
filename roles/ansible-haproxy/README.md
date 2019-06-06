@@ -242,12 +242,3 @@ $ pip install docker molecule
 $ molecule test
 ```
 
-License
--------
-
-Apache
-
-Author Information
-------------------
-
-This role was created in 2016 by Gaëtan Trellu (goldyfruit).
